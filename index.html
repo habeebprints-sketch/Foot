@@ -223,82 +223,71 @@
 
 </div>
 
-<h3>RODS</h3>
+<div style="margin-bottom:25px;">
+  <h3>Select Receipt Type</h3>
+
+  <select id="receiptType" class="input">
+    <option>Rods</option>
+    <option>Pipes</option>
+    <option>Plates</option>
+    <option>Mixed Materials</option>
+  </select>
+</div>
+
+<h3>Invoice Items</h3>
 
 <table class="blue">
   <tr>
-    <th>Item</th>
-    <th>Qty</th>
-    <th>Price</th>
+    <th>Description</th>
+    <th>Quantity (Tons)</th>
+    <th>Price (₦)</th>
     <th>Total</th>
   </tr>
 
   <tr>
-    <td>10mm Rod</td>
-    <td><input type="number" id="q1" class="tableInput"></td>
-    <td><input type="number" id="p1" class="tableInput"></td>
+    <td contenteditable="true">10mm Rod</td>
+    <td><input type="number" id="q1" class="tableInput" placeholder="Tons"></td>
+    <td><input type="number" id="p1" class="tableInput" placeholder="Millions allowed"></td>
     <td id="t1">₦0</td>
   </tr>
 
   <tr>
-    <td>12mm Rod</td>
+    <td contenteditable="true">12mm Rod</td>
     <td><input type="number" id="q2" class="tableInput"></td>
     <td><input type="number" id="p2" class="tableInput"></td>
     <td id="t2">₦0</td>
   </tr>
 
   <tr>
-    <td>16mm Rod</td>
+    <td contenteditable="true">16mm Rod</td>
     <td><input type="number" id="q3" class="tableInput"></td>
     <td><input type="number" id="p3" class="tableInput"></td>
     <td id="t3">₦0</td>
   </tr>
-</table>
-
-<h3>PIPES</h3>
-
-<table class="yellow">
-  <tr>
-    <th>Item</th>
-    <th>Qty</th>
-    <th>Price</th>
-    <th>Total</th>
-  </tr>
 
   <tr>
-    <td>Galvanized Pipe</td>
+    <td contenteditable="true">Galvanized Pipe</td>
     <td><input type="number" id="q4" class="tableInput"></td>
     <td><input type="number" id="p4" class="tableInput"></td>
     <td id="t4">₦0</td>
   </tr>
 
   <tr>
-    <td>Square Pipe</td>
+    <td contenteditable="true">Square Pipe</td>
     <td><input type="number" id="q5" class="tableInput"></td>
     <td><input type="number" id="p5" class="tableInput"></td>
     <td id="t5">₦0</td>
   </tr>
 
   <tr>
-    <td>HB Pipe</td>
+    <td contenteditable="true">HB Pipe</td>
     <td><input type="number" id="q6" class="tableInput"></td>
     <td><input type="number" id="p6" class="tableInput"></td>
     <td id="t6">₦0</td>
   </tr>
-</table>
-
-<h3>PLATES</h3>
-
-<table class="red">
-  <tr>
-    <th>Item</th>
-    <th>Qty</th>
-    <th>Price</th>
-    <th>Total</th>
-  </tr>
 
   <tr>
-    <td>Metal Plate</td>
+    <td contenteditable="true">Metal Plate</td>
     <td><input type="number" id="q7" class="tableInput"></td>
     <td><input type="number" id="p7" class="tableInput"></td>
     <td id="t7">₦0</td>
@@ -310,7 +299,9 @@
   <div class="summary-box payment-summary">
     <h3>Receipt Summary</h3>
     <p><strong>Subtotal:</strong> <span id="subtotal">₦0</span></p>
-    <p><strong>Delivery Fee:</strong> ₦<input type="number" id="deliveryFee" value="0" class="smallInput"></p>
+    <p><strong>Transportation Fee:</strong> ₦<input type="number" id="transportFee" value="0" class="smallInput"></p>
+    <p><strong>Loading Fee:</strong> ₦<input type="number" id="loadingFee" value="0" class="smallInput"></p>
+    <p><strong>Offloading Fee:</strong> ₦<input type="number" id="offloadingFee" value="0" class="smallInput"></p>
     <p><strong>Total Amount:</strong> <span id="grandTotal">₦0</span></p>
   </div>
 
@@ -350,9 +341,13 @@ for(let i=1;i<=7;i++){
   subtotal += total;
 }
 
-let deliveryFee = Number(document.getElementById('deliveryFee').value) || 0;
+let transportFee = Number(document.getElementById('transportFee').value) || 0;
 
-let grandTotal = subtotal + deliveryFee;
+let loadingFee = Number(document.getElementById('loadingFee').value) || 0;
+
+let offloadingFee = Number(document.getElementById('offloadingFee').value) || 0;
+
+let grandTotal = subtotal + transportFee + loadingFee + offloadingFee;
 
 
 document.getElementById('subtotal').innerText = '₦' + subtotal.toLocaleString();
@@ -413,4 +408,4 @@ alert('Receipt Generated Successfully');
  transform:scale(1.05);
 }
 </style></body>
-                                         </html>
+</html>
