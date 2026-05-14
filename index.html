@@ -8,126 +8,133 @@
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#eef3fb;
-    padding:20px;
-    color:#111827;
+font-family:Arial, sans-serif;
+background:#eef3fb;
+padding:20px;
+color:#111827;
 }
 
 .container{
-    max-width:1200px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    border-radius:25px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+max-width:1200px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
 .top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
-    flex-wrap:wrap;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+flex-wrap:wrap;
 }
 
 .company{
-    text-align:right;
+text-align:right;
 }
 
 .input,
 .tableInput,
 .smallInput,
 select{
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid #d1d5db;
-    margin-top:8px;
-    font-size:15px;
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid #d1d5db;
+margin-top:8px;
+font-size:15px;
+}
+
+.amountInput{
+font-size:18px;
+font-weight:bold;
+padding:16px;
+letter-spacing:1px;
 }
 
 .info-boxes{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-bottom:25px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+margin-bottom:25px;
 }
 
 .box{
-    background:#f8fafc;
-    padding:20px;
-    border-radius:20px;
+background:#f8fafc;
+padding:20px;
+border-radius:20px;
 }
 
 table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
 }
 
 table th{
-    background:#0b4ea2;
-    color:white;
-    padding:15px;
+background:#0b4ea2;
+color:white;
+padding:15px;
 }
 
 table td{
-    border:1px solid #e5e7eb;
-    padding:12px;
+border:1px solid #e5e7eb;
+padding:12px;
 }
 
 .summary{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-top:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+margin-top:30px;
 }
 
 .summary-box{
-    background:#f8fafc;
-    padding:25px;
-    border-radius:20px;
+background:#f8fafc;
+padding:25px;
+border-radius:20px;
 }
 
 .btn{
-    padding:14px 22px;
-    border:none;
-    border-radius:14px;
-    background:#0b4ea2;
-    color:white;
-    cursor:pointer;
-    margin:10px 5px;
-    font-size:16px;
-    transition:0.3s;
+padding:14px 22px;
+border:none;
+border-radius:14px;
+background:#0b4ea2;
+color:white;
+cursor:pointer;
+margin:10px 5px;
+font-size:16px;
+transition:0.3s;
 }
 
 .btn:hover{
-    background:#083b7d;
-    transform:translateY(-2px);
+background:#083b7d;
+transform:translateY(-2px);
 }
 
 @media(max-width:768px){
 
 .info-boxes,
 .summary{
-    grid-template-columns:1fr;
+grid-template-columns:1fr;
 }
 
 .top{
-    flex-direction:column;
-    align-items:flex-start;
+flex-direction:column;
+align-items:flex-start;
 }
 
 .company{
-    text-align:left;
-    margin-top:15px;
+text-align:left;
+margin-top:15px;
 }
 
 }
@@ -150,10 +157,13 @@ table td{
 
 <p>
 <strong>Receipt No:</strong>
-<input type="number"
+
+<input
+type="number"
 id="receiptNumber"
 class="smallInput"
 placeholder="Enter Receipt No">
+
 </p>
 
 <p>
@@ -177,12 +187,14 @@ placeholder="Enter Receipt No">
 
 <h3>Customer Details</h3>
 
-<input type="text"
+<input
+type="text"
 id="customer"
 placeholder="Customer Name"
 class="input">
 
-<input type="text"
+<input
+type="text"
 id="delivery"
 placeholder="Delivered To"
 class="input">
@@ -194,10 +206,12 @@ class="input">
 <h3>Payment Method</h3>
 
 <select id="paymentMethod" class="input">
+
 <option>Cash</option>
 <option>Transfer</option>
 <option>POS</option>
 <option>Credit</option>
+
 </select>
 
 </div>
@@ -209,10 +223,12 @@ class="input">
 <h3>Select Receipt Type</h3>
 
 <select id="receiptType" class="input">
+
 <option>Rods</option>
 <option>Pipes</option>
 <option>Plates</option>
 <option>Mixed Materials</option>
+
 </select>
 
 </div>
@@ -222,10 +238,12 @@ class="input">
 <table>
 
 <tr>
+
 <th>Material</th>
 <th>Quantity (Tons)</th>
 <th>Price (₦)</th>
 <th>Total</th>
+
 </tr>
 
 <tr>
@@ -247,18 +265,24 @@ class="input">
 </td>
 
 <td>
-<input type="number"
+
+<input
+type="number"
 id="q1"
 class="tableInput"
 placeholder="Tons">
+
 </td>
 
 <td>
-<input type="text"
+
+<input
+type="text"
 id="p1"
-class="tableInput"
+class="tableInput amountInput"
 placeholder="1,000,000"
-oninput="formatNumber(this)">
+onkeyup="formatCurrency(this)">
+
 </td>
 
 <td id="t1">₦0</td>
@@ -273,6 +297,8 @@ oninput="formatNumber(this)">
 
 <h3>Receipt Summary</h3>
 
+<br>
+
 <p>
 <strong>Subtotal:</strong>
 <span id="subtotal">₦0</span>
@@ -282,33 +308,45 @@ oninput="formatNumber(this)">
 
 <p>
 <strong>Transportation Fee:</strong>
+
 ₦
-<input type="number"
+
+<input
+type="number"
 id="transportFee"
 value="0"
 class="smallInput">
+
 </p>
 
 <br>
 
 <p>
 <strong>Loading Fee:</strong>
+
 ₦
-<input type="number"
+
+<input
+type="number"
 id="loadingFee"
 value="0"
 class="smallInput">
+
 </p>
 
 <br>
 
 <p>
 <strong>Offloading Fee:</strong>
+
 ₦
-<input type="number"
+
+<input
+type="number"
 id="offloadingFee"
 value="0"
 class="smallInput">
+
 </p>
 
 <br>
@@ -324,22 +362,32 @@ class="smallInput">
 
 <h3>Monthly Report</h3>
 
+<br>
+
 <p>
 <strong>Total Sales:</strong>
+
 ₦
-<input type="number"
+
+<input
+type="number"
 id="sales"
 class="smallInput">
+
 </p>
 
 <br>
 
 <p>
 <strong>Total Expenses:</strong>
+
 ₦
-<input type="number"
+
+<input
+type="number"
 id="expenses"
 class="smallInput">
+
 </p>
 
 <br>
@@ -357,7 +405,8 @@ class="smallInput">
 
 <div id="receiptPreview"
 
-style="display:none;
+style="
+display:none;
 background:linear-gradient(145deg,#02142b,#052b5b,#0b4ea2);
 color:white;
 padding:35px;
@@ -400,13 +449,17 @@ z-index:2;">
 margin:0;
 font-size:35px;
 letter-spacing:1px;">
+
 NICCO ROD
+
 </h1>
 
 <p style="
 opacity:0.85;
 font-size:14px;">
+
 DIGITAL PAYMENT RECEIPT
+
 </p>
 
 </div>
@@ -440,6 +493,7 @@ justify-content:space-between;
 margin-bottom:18px;">
 
 <span style="opacity:0.8;">Receipt No</span>
+
 <strong id="previewReceiptNo"></strong>
 
 </div>
@@ -450,6 +504,7 @@ justify-content:space-between;
 margin-bottom:18px;">
 
 <span style="opacity:0.8;">Customer</span>
+
 <strong id="previewCustomer"></strong>
 
 </div>
@@ -460,6 +515,7 @@ justify-content:space-between;
 margin-bottom:18px;">
 
 <span style="opacity:0.8;">Delivered To</span>
+
 <strong id="previewDelivery"></strong>
 
 </div>
@@ -470,6 +526,7 @@ justify-content:space-between;
 margin-bottom:18px;">
 
 <span style="opacity:0.8;">Payment Method</span>
+
 <strong id="previewPayment"></strong>
 
 </div>
@@ -488,11 +545,12 @@ Items Purchased
 
 style="
 background:#081527;
-padding:18px;
-border-radius:18px;
+padding:22px;
+border-radius:22px;
 line-height:1.8;
 font-size:15px;
-border:1px solid rgba(255,255,255,0.08);">
+border:1px solid rgba(255,255,255,0.08);
+overflow-x:auto;">
 
 </div>
 
@@ -511,7 +569,19 @@ Amount in Words
 
 </p>
 
-<h3>Zero Naira Only</h3>
+<h3
+id="amountWords"
+
+style="
+margin-top:10px;
+font-size:24px;
+line-height:1.6;
+color:#ffffff;
+letter-spacing:0.5px;">
+
+Zero Naira Only
+
+</h3>
 
 <div style="
 display:flex;
@@ -521,7 +591,9 @@ margin-top:25px;">
 
 <div>
 
-<p style="opacity:0.7;">Total Amount</p>
+<p style="opacity:0.7;">
+Total Amount
+</p>
 
 <h1 id="previewTotal"
 
@@ -537,7 +609,9 @@ color:#4ade80;">
 
 <div>
 
-<p style="opacity:0.7;">Status</p>
+<p style="opacity:0.7;">
+Status
+</p>
 
 <h2 style="color:#22c55e;">
 PAID
@@ -555,21 +629,24 @@ PAID
 
 <div style="margin-top:30px;text-align:center;">
 
-<button onclick="calculateInvoice()"
+<button
+onclick="calculateInvoice()"
 class="btn">
 
 Generate Receipt
 
 </button>
 
-<button onclick="saveInvoice()"
+<button
+onclick="saveInvoice()"
 class="btn">
 
 Save Invoice
 
 </button>
 
-<button onclick="window.print()"
+<button
+onclick="window.print()"
 class="btn">
 
 Print / Save PDF
@@ -585,12 +662,16 @@ Print / Save PDF
 document.getElementById("date").innerText =
 new Date().toLocaleDateString();
 
-function formatNumber(input){
+
+
+function formatCurrency(input){
 
 let value =
 input.value.replace(/,/g,'');
 
-if(!isNaN(value) && value !== ''){
+if(value === '') return;
+
+if(!isNaN(value)){
 
 input.value =
 Number(value).toLocaleString();
@@ -598,6 +679,134 @@ Number(value).toLocaleString();
 }
 
 }
+
+
+
+function numberToWords(num){
+
+const ones = [
+
+"",
+"One",
+"Two",
+"Three",
+"Four",
+"Five",
+"Six",
+"Seven",
+"Eight",
+"Nine",
+"Ten",
+"Eleven",
+"Twelve",
+"Thirteen",
+"Fourteen",
+"Fifteen",
+"Sixteen",
+"Seventeen",
+"Eighteen",
+"Nineteen"
+
+];
+
+const tens = [
+
+"",
+"",
+"Twenty",
+"Thirty",
+"Forty",
+"Fifty",
+"Sixty",
+"Seventy",
+"Eighty",
+"Ninety"
+
+];
+
+function convertHundreds(n){
+
+let str = "";
+
+if(n > 99){
+
+str +=
+ones[Math.floor(n / 100)]
++ " Hundred ";
+
+n %= 100;
+
+}
+
+if(n > 19){
+
+str +=
+tens[Math.floor(n / 10)]
++ " ";
+
+n %= 10;
+
+}
+
+if(n > 0){
+
+str += ones[n] + " ";
+
+}
+
+return str;
+
+}
+
+if(num === 0){
+
+return "Zero Naira Only";
+
+}
+
+let result = "";
+
+if(num >= 1000000000){
+
+result +=
+convertHundreds(Math.floor(num / 1000000000))
++ " Billion ";
+
+num %= 1000000000;
+
+}
+
+if(num >= 1000000){
+
+result +=
+convertHundreds(Math.floor(num / 1000000))
++ " Million ";
+
+num %= 1000000;
+
+}
+
+if(num >= 1000){
+
+result +=
+convertHundreds(Math.floor(num / 1000))
++ " Thousand ";
+
+num %= 1000;
+
+}
+
+if(num > 0){
+
+result += convertHundreds(num);
+
+}
+
+return result + " Naira Only";
+
+}
+
+
 
 function calculateInvoice(){
 
@@ -622,10 +831,13 @@ Number(document.getElementById("loadingFee").value);
 let offloading =
 Number(document.getElementById("offloadingFee").value);
 
-let total = qty * price;
+let total =
+qty * price;
 
 let grandTotal =
 total + transport + loading + offloading;
+
+
 
 document.getElementById("t1").innerText =
 "₦" + total.toLocaleString();
@@ -639,6 +851,8 @@ document.getElementById("grandTotal").innerText =
 document.getElementById("previewTotal").innerText =
 "₦" + grandTotal.toLocaleString();
 
+
+
 document.getElementById("previewReceiptNo").innerText =
 document.getElementById("receiptNumber").value;
 
@@ -651,28 +865,122 @@ document.getElementById("delivery").value;
 document.getElementById("previewPayment").innerText =
 document.getElementById("paymentMethod").value;
 
+
+
+document.getElementById("amountWords").innerText =
+numberToWords(grandTotal);
+
+
+
 document.getElementById("previewItems").innerHTML = `
 
-<p>
+<table style="
+width:100%;
+border-collapse:collapse;
+color:white;
+min-width:650px;">
+
+<tr>
+
+<th style="
+text-align:left;
+padding:14px;
+font-size:15px;
+border-bottom:1px solid rgba(255,255,255,0.1);">
+
+Description
+
+</th>
+
+<th style="
+text-align:center;
+padding:14px;
+font-size:15px;
+border-bottom:1px solid rgba(255,255,255,0.1);">
+
+Tons
+
+</th>
+
+<th style="
+text-align:right;
+padding:14px;
+font-size:15px;
+border-bottom:1px solid rgba(255,255,255,0.1);">
+
+Amount
+
+</th>
+
+<th style="
+text-align:right;
+padding:14px;
+font-size:15px;
+border-bottom:1px solid rgba(255,255,255,0.1);">
+
+Total
+
+</th>
+
+</tr>
+
+<tr>
+
+<td style="
+padding:16px 14px;
+font-size:16px;">
+
 ${item}
-</p>
 
-<p>
-${qty} Tons × ₦${price.toLocaleString()}
-</p>
+</td>
 
-<h3>
+<td style="
+padding:16px 14px;
+text-align:center;
+font-size:16px;">
+
+${qty}
+
+</td>
+
+<td style="
+padding:16px 14px;
+text-align:right;
+font-size:16px;">
+
+₦${price.toLocaleString()}
+
+</td>
+
+<td style="
+padding:16px 14px;
+text-align:right;
+font-size:18px;
+font-weight:bold;
+color:#4ade80;">
+
 ₦${total.toLocaleString()}
-</h3>
+
+</td>
+
+</tr>
+
+</table>
 
 `;
+
+
 
 document.getElementById("receiptPreview").style.display =
 "block";
 
+
+
 calculateProfit();
 
 }
+
+
 
 function calculateProfit(){
 
@@ -690,6 +998,8 @@ document.getElementById("profit").innerText =
 
 }
 
+
+
 function saveInvoice(){
 
 alert("Invoice Saved Successfully");
@@ -699,4 +1009,4 @@ alert("Invoice Saved Successfully");
 </script>
 
 </body>
-    </html>
+</html>
