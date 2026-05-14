@@ -46,6 +46,8 @@
     }
 
     .container {
+      width:100%;
+      overflow-x:auto;
       background: white;
       color: black;
       max-width: 1200px;
@@ -98,6 +100,7 @@
     }
 
     table {
+      min-width:700px;
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 30px;
@@ -189,7 +192,7 @@
   </div>  <div class="container"><div class="top">
   <div>
     <h2>SMART INVOICE</h2>
-    <p><strong>Invoice No:</strong> <span id="invoiceNumber"></span></p>
+    <p><strong>Receipt No:</strong> <input type="text" id="receiptNumber" class="smallInput" placeholder="Enter Receipt No"></p>
     <p><strong>Date:</strong> <span id="date"></span></p>
   </div>
 
@@ -245,49 +248,49 @@
   </tr>
 
   <tr>
-    <td contenteditable="true">10mm Rod</td>
+    <td contenteditable="true" placeholder="Type Item">Type Item</td>
     <td><input type="number" id="q1" class="tableInput" placeholder="Tons"></td>
     <td><input type="number" id="p1" class="tableInput" placeholder="Millions allowed"></td>
     <td id="t1">₦0</td>
   </tr>
 
   <tr>
-    <td contenteditable="true">12mm Rod</td>
+    <td contenteditable="true">Type Item</td>
     <td><input type="number" id="q2" class="tableInput"></td>
     <td><input type="number" id="p2" class="tableInput"></td>
     <td id="t2">₦0</td>
   </tr>
 
   <tr>
-    <td contenteditable="true">16mm Rod</td>
+    <td contenteditable="true">Type Item</td>
     <td><input type="number" id="q3" class="tableInput"></td>
     <td><input type="number" id="p3" class="tableInput"></td>
     <td id="t3">₦0</td>
   </tr>
 
   <tr>
-    <td contenteditable="true">Galvanized Pipe</td>
+    <td contenteditable="true">Type Item</td>
     <td><input type="number" id="q4" class="tableInput"></td>
     <td><input type="number" id="p4" class="tableInput"></td>
     <td id="t4">₦0</td>
   </tr>
 
   <tr>
-    <td contenteditable="true">Square Pipe</td>
+    <td contenteditable="true">Type Item</td>
     <td><input type="number" id="q5" class="tableInput"></td>
     <td><input type="number" id="p5" class="tableInput"></td>
     <td id="t5">₦0</td>
   </tr>
 
   <tr>
-    <td contenteditable="true">HB Pipe</td>
+    <td contenteditable="true">Type Item</td>
     <td><input type="number" id="q6" class="tableInput"></td>
     <td><input type="number" id="p6" class="tableInput"></td>
     <td id="t6">₦0</td>
   </tr>
 
   <tr>
-    <td contenteditable="true">Metal Plate</td>
+    <td contenteditable="true">Type Item</td>
     <td><input type="number" id="q7" class="tableInput"></td>
     <td><input type="number" id="p7" class="tableInput"></td>
     <td id="t7">₦0</td>
@@ -322,7 +325,7 @@
   </div><script>
 
 const invoiceNum = 'INV-' + Math.floor(Math.random()*100000);
-document.getElementById('invoiceNumber').innerText = invoiceNum;
+// Receipt number now manual
 
 document.getElementById('date').innerText = new Date().toLocaleDateString();
 
@@ -350,9 +353,9 @@ let offloadingFee = Number(document.getElementById('offloadingFee').value) || 0;
 let grandTotal = subtotal + transportFee + loadingFee + offloadingFee;
 
 
-document.getElementById('subtotal').innerText = '₦' + subtotal.toLocaleString();
+document.getElementById('subtotal').innerText = '₦' + subtotal.toLocaleString('en-NG');
 
-document.getElementById('grandTotal').innerText = '₦' + grandTotal.toLocaleString();
+document.getElementById('grandTotal').innerText = '₦' + grandTotal.toLocaleString('en-NG');
 
 let sales = Number(document.getElementById('sales').value) || 0;
 let expenses = Number(document.getElementById('expenses').value) || 0;
@@ -360,9 +363,9 @@ let expenses = Number(document.getElementById('expenses').value) || 0;
 let profit = sales - expenses;
 
 if(profit >= 0){
- document.getElementById('profit').innerText = 'Profit: ₦' + profit.toLocaleString();
+ document.getElementById('profit').innerText = 'Profit: ₦' + profit.toLocaleString('en-NG');
 }else{
- document.getElementById('profit').innerText = 'Loss: ₦' + Math.abs(profit).toLocaleString();
+ document.getElementById('profit').innerText = 'Loss: ₦' + Math.abs(profit).toLocaleString('en-NG');
 }
 
 alert('Receipt Generated Successfully');
@@ -408,4 +411,4 @@ alert('Receipt Generated Successfully');
  transform:scale(1.05);
 }
 </style></body>
-</html>
+  </html>
