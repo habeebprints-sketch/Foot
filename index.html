@@ -1,141 +1,349 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Penalty Shootout Game</title>
-  <style>
-    body {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NICCO ROD Invoice</title>  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000, #0f172a, #1e3a8a);
+      color: white;
+      padding: 20px;
+      animation: bgMove 8s infinite alternate;
+    }
+
+    @keyframes bgMove {
+      from {
+        background-position: left;
+      }
+      to {
+        background-position: right;
+      }
+    }
+
+    .flash-screen {
       text-align: center;
-      background: #0b6623;
+      margin-bottom: 25px;
+      animation: flash 1.5s infinite;
+    }
+
+    @keyframes flash {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .flash-screen h1 {
+      font-size: 50px;
+      color: gold;
+      letter-spacing: 4px;
+      text-shadow: 0 0 20px gold;
+    }
+
+    .container {
+      background: white;
+      color: black;
+      max-width: 1200px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 25px;
+      border: 5px solid gold;
+      box-shadow: 0 0 30px rgba(255,255,255,0.3);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .top h2 {
+      color: #1e3a8a;
+      font-size: 40px;
+    }
+
+    .company {
+      text-align: right;
+    }
+
+    .company h3 {
+      color: goldenrod;
+      font-size: 30px;
+    }
+
+    .info-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    .customer {
+      background: #dbeafe;
+    }
+
+    .payment {
+      background: #fef9c3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
       color: white;
     }
 
-    h1 {
-      margin-top: 20px;
+    .blue th {
+      background: #1e3a8a;
     }
 
-    .goal {
-      position: relative;
-      width: 300px;
-      height: 150px;
-      border: 5px solid white;
-      margin: 30px auto;
+    .yellow th {
+      background: #ca8a04;
+    }
+
+    .red th {
+      background: #dc2626;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .summary {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
     }
 
-    .cell {
-      border: 1px dashed rgba(255,255,255,0.4);
+    .summary-box {
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    .payment-summary {
+      background: #f3f4f6;
+    }
+
+    .report {
+      background: linear-gradient(135deg, #16a34a, #065f46);
+      color: white;
+    }
+
+    .report h3 {
+      color: white;
+    }
+
+    .signature {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      justify-content: space-between;
+      margin-top: 50px;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    .cell:hover {
-      background: rgba(255,255,255,0.2);
+    .line {
+      width: 250px;
+      border-bottom: 2px solid black;
+      margin-top: 40px;
     }
 
-    .ball {
-      font-size: 24px;
-    }
-
-    .goalkeeper {
-      position: absolute;
-      bottom: 10px;
-      left: 120px;
-      font-size: 30px;
-      transition: 0.3s;
-    }
-
-    #result {
-      font-size: 22px;
-      margin-top: 10px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-top: 15px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>⚽ Penalty Shootout</h1>
-
-  <div class="goal" id="goal">
-    <div class="cell" data-pos="0"></div>
-    <div class="cell" data-pos="1"></div>
-    <div class="cell" data-pos="2"></div>
-    <div class="cell" data-pos="3"></div>
-    <div class="cell" data-pos="4"></div>
-    <div class="cell" data-pos="5"></div>
-    <div class="goalkeeper" id="keeper">🧤</div>
-  </div>
-
-  <p id="result">Choose where to shoot!</p>
-  <p>Score: <span id="score">0</span></p>
-
-  <button onclick="resetGame()">Reset</button>
-
-  <script>
-    const cells = document.querySelectorAll('.cell');
-    const result = document.getElementById('result');
-    const scoreDisplay = document.getElementById('score');
-    const keeper = document.getElementById('keeper');
-
-    let score = 0;
-
-    cells.forEach(cell => {
-      cell.addEventListener('click', shoot);
-    });
-
-    function shoot(e) {
-      const playerChoice = e.target.dataset.pos;
-      const keeperChoice = Math.floor(Math.random() * 6);
-
-      clearCells();
-
-      // Move goalkeeper
-      const positions = [
-        "left: 20px; top: 10px;",
-        "left: 120px; top: 10px;",
-        "left: 220px; top: 10px;",
-        "left: 20px; bottom: 10px;",
-        "left: 120px; bottom: 10px;",
-        "left: 220px; bottom: 10px;"
-      ];
-
-      keeper.style = "position:absolute;" + positions[keeperChoice];
-
-      if (playerChoice == keeperChoice) {
-        result.textContent = "❌ Saved by the goalkeeper!";
-      } else {
-        result.textContent = "🎉 GOAL!!!";
-        score++;
-        scoreDisplay.textContent = score;
+    @media(max-width: 768px) {
+      .top {
+        flex-direction: column;
+        gap: 20px;
       }
 
-      // Show ball
-      e.target.innerHTML = "<span class='ball'>⚽</span>";
-    }
+      .company {
+        text-align: left;
+      }
 
-    function clearCells() {
-      cells.forEach(cell => cell.innerHTML = "");
+      .flash-screen h1 {
+        font-size: 35px;
+      }
     }
+  </style></head>
+<body>  <div class="flash-screen">
+    <h1>NICCO ROD</h1>
+    <p>Iron Rod & Pipe Sales Invoice System</p>
+  </div>  <div class="container"><div class="top">
+  <div>
+    <h2>INVOICE</h2>
+    <p><strong>Invoice No:</strong> INV-2026-001</p>
+    <p><strong>Date:</strong> __________________</p>
+  </div>
 
-    function resetGame() {
-      score = 0;
-      scoreDisplay.textContent = score;
-      result.textContent = "Choose where to shoot!";
-      clearCells();
-      keeper.style = "left:120px; bottom:10px;";
-    }
-  </script>
+  <div class="company">
+    <h3>NICCO ROD</h3>
+    <p>Lagos, Nigeria</p>
+    <p>+234 XXX XXX XXXX</p>
+  </div>
+</div>
 
-</body>
+<div class="info-boxes">
+
+  <div class="box customer">
+    <h3>Customer Details</h3>
+    <p><strong>Customer Name:</strong> _____________________</p>
+    <p><strong>Delivered To:</strong> _____________________</p>
+  </div>
+
+  <div class="box payment">
+    <h3>Payment Method</h3>
+    <p>☐ Cash</p>
+    <p>☐ Transfer</p>
+    <p>☐ POS</p>
+    <p>☐ Credit</p>
+  </div>
+
+</div>
+
+<h3>RODS</h3>
+
+<table class="blue">
+  <tr>
+    <th>Item</th>
+    <th>Size</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Amount</th>
+  </tr>
+
+  <tr>
+    <td>Iron Rod</td>
+    <td>10mm</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>Iron Rod</td>
+    <td>12mm</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>Iron Rod</td>
+    <td>16mm</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<h3>PIPES</h3>
+
+<table class="yellow">
+  <tr>
+    <th>Item</th>
+    <th>Type</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Amount</th>
+  </tr>
+
+  <tr>
+    <td>Pipe</td>
+    <td>Galvanized Pipe</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>Pipe</td>
+    <td>Square Pipe</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>Pipe</td>
+    <td>HB Pipe</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<h3>PLATES</h3>
+
+<table class="red">
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Amount</th>
+  </tr>
+
+  <tr>
+    <td>Metal Plate</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<div class="summary">
+
+  <div class="summary-box payment-summary">
+    <h3>Payment Summary</h3>
+    <p><strong>Subtotal:</strong> ₦____________</p>
+    <p><strong>Delivery Fee:</strong> ₦____________</p>
+    <p><strong>Total Amount:</strong> ₦____________</p>
+    <p><strong>Amount Paid:</strong> ₦____________</p>
+    <p><strong>Balance:</strong> ₦____________</p>
+  </div>
+
+  <div class="summary-box report">
+    <h3>Monthly Business Report</h3>
+    <p><strong>Total Sales:</strong> ₦____________</p>
+    <p><strong>Total Expenses:</strong> ₦____________</p>
+    <p><strong>Profit:</strong> ₦____________</p>
+    <p><strong>Loss:</strong> ₦____________</p>
+    <br>
+    <h2>📈 Profit & Loss Tracker</h2>
+  </div>
+
+</div>
+
+<div class="signature">
+
+  <div>
+    <p><strong>Customer Signature</strong></p>
+    <div class="line"></div>
+  </div>
+
+  <div>
+    <p><strong>Authorized Signature</strong></p>
+    <div class="line"></div>
+  </div>
+
+</div>
+
+  </div></body>
 </html>
