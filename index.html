@@ -6,28 +6,34 @@
 <title>NICCO ROD - Smart Invoice</title>
 
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background:#f3f6fb;
+
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#eef3fb;
     padding:20px;
-    color:#111;
+    color:#111827;
 }
 
 .container{
     max-width:1200px;
     margin:auto;
     background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
 .top{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:25px;
+    margin-bottom:30px;
     flex-wrap:wrap;
 }
 
@@ -40,11 +46,11 @@ body{
 .smallInput,
 select{
     width:100%;
-    padding:10px;
-    border-radius:10px;
-    border:1px solid #ccc;
-    margin-top:5px;
-    box-sizing:border-box;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    margin-top:8px;
+    font-size:15px;
 }
 
 .info-boxes{
@@ -57,7 +63,7 @@ select{
 .box{
     background:#f8fafc;
     padding:20px;
-    border-radius:15px;
+    border-radius:20px;
 }
 
 table{
@@ -69,12 +75,12 @@ table{
 table th{
     background:#0b4ea2;
     color:white;
-    padding:12px;
+    padding:15px;
 }
 
 table td{
-    border:1px solid #ddd;
-    padding:10px;
+    border:1px solid #e5e7eb;
+    padding:12px;
 }
 
 .summary{
@@ -86,23 +92,25 @@ table td{
 
 .summary-box{
     background:#f8fafc;
-    padding:20px;
-    border-radius:15px;
+    padding:25px;
+    border-radius:20px;
 }
 
 .btn{
-    padding:12px 20px;
+    padding:14px 22px;
     border:none;
-    border-radius:12px;
+    border-radius:14px;
     background:#0b4ea2;
     color:white;
     cursor:pointer;
     margin:10px 5px;
     font-size:16px;
+    transition:0.3s;
 }
 
 .btn:hover{
     background:#083b7d;
+    transform:translateY(-2px);
 }
 
 @media(max-width:768px){
@@ -123,8 +131,10 @@ table td{
 }
 
 }
+
 </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -135,17 +145,22 @@ table td{
 <div class="top">
 
 <div>
+
 <h2>SMART INVOICE</h2>
 
 <p>
 <strong>Receipt No:</strong>
-<input type="number" id="receiptNumber" class="smallInput" placeholder="Enter Receipt No">
+<input type="number"
+id="receiptNumber"
+class="smallInput"
+placeholder="Enter Receipt No">
 </p>
 
 <p>
 <strong>Date:</strong>
 <span id="date"></span>
 </p>
+
 </div>
 
 <div class="company">
@@ -158,17 +173,23 @@ table td{
 
 <div class="info-boxes">
 
-<div class="box customer">
+<div class="box">
 
 <h3>Customer Details</h3>
 
-<input type="text" id="customer" placeholder="Customer Name" class="input" />
+<input type="text"
+id="customer"
+placeholder="Customer Name"
+class="input">
 
-<input type="text" id="delivery" placeholder="Delivered To" class="input" />
+<input type="text"
+id="delivery"
+placeholder="Delivered To"
+class="input">
 
 </div>
 
-<div class="box payment">
+<div class="box">
 
 <h3>Payment Method</h3>
 
@@ -198,7 +219,7 @@ table td{
 
 <h3>Invoice Items</h3>
 
-<table class="blue">
+<table>
 
 <tr>
 <th>Material</th>
@@ -210,75 +231,45 @@ table td{
 <tr>
 
 <td>
-<input type="text" id="item1" class="tableInput" placeholder="Type Item">
+
+<select id="item1" class="tableInput">
+
+<option value="10mm Rod">10mm Rod</option>
+<option value="12mm Rod">12mm Rod</option>
+<option value="16mm Rod">16mm Rod</option>
+<option value="Galvanized Pipe">Galvanized Pipe</option>
+<option value="Square Pipe">Square Pipe</option>
+<option value="HB Pipe">HB Pipe</option>
+<option value="Metal Plate">Metal Plate</option>
+
+</select>
+
 </td>
 
 <td>
-<input type="number" id="q1" class="tableInput" placeholder="Tons">
+<input type="number"
+id="q1"
+class="tableInput"
+placeholder="Tons">
 </td>
 
 <td>
-<input type="number" id="p1" class="tableInput" placeholder="Price">
+<input type="text"
+id="p1"
+class="tableInput"
+placeholder="1,000,000"
+oninput="formatNumber(this)">
 </td>
 
 <td id="t1">₦0</td>
 
 </tr>
 
-<tr>
-<td>10mm Rod</td>
-<td>-</td>
-<td>-</td>
-<td>₦0</td>
-</tr>
-
-<tr>
-<td>12mm Rod</td>
-<td>-</td>
-<td>-</td>
-<td>₦0</td>
-</tr>
-
-<tr>
-<td>16mm Rod</td>
-<td>-</td>
-<td>-</td>
-<td>₦0</td>
-</tr>
-
-<tr>
-<td>Galvanized Pipe</td>
-<td>-</td>
-<td>-</td>
-<td>₦0</td>
-</tr>
-
-<tr>
-<td>Square Pipe</td>
-<td>-</td>
-<td>-</td>
-<td>₦0</td>
-</tr>
-
-<tr>
-<td>HB Pipe</td>
-<td>-</td>
-<td>-</td>
-<td>₦0</td>
-</tr>
-
-<tr>
-<td>Metal Plate</td>
-<td>-</td>
-<td>-</td>
-<td>₦0</td>
-</tr>
-
 </table>
 
 <div class="summary">
 
-<div class="summary-box payment-summary">
+<div class="summary-box">
 
 <h3>Receipt Summary</h3>
 
@@ -287,20 +278,40 @@ table td{
 <span id="subtotal">₦0</span>
 </p>
 
+<br>
+
 <p>
 <strong>Transportation Fee:</strong>
-₦<input type="number" id="transportFee" value="0" class="smallInput">
+₦
+<input type="number"
+id="transportFee"
+value="0"
+class="smallInput">
 </p>
+
+<br>
 
 <p>
 <strong>Loading Fee:</strong>
-₦<input type="number" id="loadingFee" value="0" class="smallInput">
+₦
+<input type="number"
+id="loadingFee"
+value="0"
+class="smallInput">
 </p>
+
+<br>
 
 <p>
 <strong>Offloading Fee:</strong>
-₦<input type="number" id="offloadingFee" value="0" class="smallInput">
+₦
+<input type="number"
+id="offloadingFee"
+value="0"
+class="smallInput">
 </p>
+
+<br>
 
 <p>
 <strong>Total Amount:</strong>
@@ -309,19 +320,29 @@ table td{
 
 </div>
 
-<div class="summary-box report">
+<div class="summary-box">
 
 <h3>Monthly Report</h3>
 
 <p>
 <strong>Total Sales:</strong>
-₦<input type="number" id="sales" class="smallInput">
+₦
+<input type="number"
+id="sales"
+class="smallInput">
 </p>
+
+<br>
 
 <p>
 <strong>Total Expenses:</strong>
-₦<input type="number" id="expenses" class="smallInput">
+₦
+<input type="number"
+id="expenses"
+class="smallInput">
 </p>
+
+<br>
 
 <p>
 <strong>Profit/Loss:</strong>
@@ -332,65 +353,199 @@ table td{
 
 </div>
 
-<div id="receiptPreview" style="display:none;background:linear-gradient(160deg,#052b5b,#0b4ea2,#1e88e5);color:white;padding:28px;border-radius:35px;margin-top:30px;box-shadow:0 15px 40px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.15);position:relative;overflow:hidden;">
+<!-- RECEIPT PREVIEW -->
 
-<div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,0.08);border-radius:50%;"></div>
+<div id="receiptPreview"
 
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative;z-index:2;">
+style="display:none;
+background:linear-gradient(145deg,#02142b,#052b5b,#0b4ea2);
+color:white;
+padding:35px;
+border-radius:40px;
+margin-top:35px;
+box-shadow:0 25px 60px rgba(0,0,0,0.45);
+position:relative;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.12);">
+
+<div style="
+position:absolute;
+top:-80px;
+right:-80px;
+width:240px;
+height:240px;
+background:rgba(255,255,255,0.06);
+border-radius:50%;"></div>
+
+<div style="
+position:absolute;
+bottom:-100px;
+left:-100px;
+width:280px;
+height:280px;
+background:rgba(255,255,255,0.04);
+border-radius:50%;"></div>
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+position:relative;
+z-index:2;">
 
 <div>
 
-<h2>NICCO ROD</h2>
+<h1 style="
+margin:0;
+font-size:35px;
+letter-spacing:1px;">
+NICCO ROD
+</h1>
 
-<p>DIGITAL PAYMENT RECEIPT</p>
+<p style="
+opacity:0.85;
+font-size:14px;">
+DIGITAL PAYMENT RECEIPT
+</p>
 
 </div>
 
-<div style="background:linear-gradient(135deg,#22c55e,#16a34a);padding:10px 18px;border-radius:50px;font-weight:bold;box-shadow:0 5px 15px rgba(34,197,94,0.4);">
-SUCCESS
-</div>
+<div style="
+background:linear-gradient(135deg,#22c55e,#16a34a);
+padding:12px 22px;
+border-radius:50px;
+font-weight:bold;
+font-size:14px;
+box-shadow:0 8px 20px rgba(34,197,94,0.4);">
+
+PAYMENT SUCCESSFUL
 
 </div>
 
-<div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);padding:22px;border-radius:25px;border:1px solid rgba(255,255,255,0.12);position:relative;z-index:2;">
+</div>
 
-<div style="display:flex;justify-content:space-between;margin-bottom:15px;">
+<div style="
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(14px);
+padding:25px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,0.12);
+position:relative;
+z-index:2;">
+
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:18px;">
+
 <span style="opacity:0.8;">Receipt No</span>
 <strong id="previewReceiptNo"></strong>
+
 </div>
 
-<div style="display:flex;justify-content:space-between;margin-bottom:15px;">
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:18px;">
+
 <span style="opacity:0.8;">Customer</span>
 <strong id="previewCustomer"></strong>
+
 </div>
 
-<div style="display:flex;justify-content:space-between;margin-bottom:15px;gap:20px;">
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:18px;">
+
 <span style="opacity:0.8;">Delivered To</span>
-<strong id="previewDelivery" style="text-align:right;"></strong>
+<strong id="previewDelivery"></strong>
+
 </div>
 
-<div style="display:flex;justify-content:space-between;margin-bottom:15px;">
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:18px;">
+
 <span style="opacity:0.8;">Payment Method</span>
 <strong id="previewPayment"></strong>
+
 </div>
 
-<hr style="border:1px solid rgba(255,255,255,0.15);margin:22px 0;">
+<hr style="
+border:1px solid rgba(255,255,255,0.1);
+margin:25px 0;">
 
-<div style="margin-top:20px;">
-<h3>Items Purchased</h3>
-<div id="previewItems"></div>
+<div style="margin-bottom:20px;">
+
+<h3 style="margin-bottom:15px;">
+Items Purchased
+</h3>
+
+<div id="previewItems"
+
+style="
+background:#081527;
+padding:18px;
+border-radius:18px;
+line-height:1.8;
+font-size:15px;
+border:1px solid rgba(255,255,255,0.08);">
+
 </div>
 
-<div style="margin-top:20px;background:#0f172a;padding:15px;border-radius:15px;">
+</div>
 
-<p>Amount in Words</p>
+<div style="
+background:linear-gradient(145deg,#0f172a,#111827);
+padding:25px;
+border-radius:25px;">
 
-<strong>Zero Naira Only</strong>
+<p style="
+opacity:0.7;
+margin-bottom:8px;">
 
-<h2 style="margin-top:15px;">
-Total:
-<span id="previewTotal">₦0</span>
+Amount in Words
+
+</p>
+
+<h3>Zero Naira Only</h3>
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:25px;">
+
+<div>
+
+<p style="opacity:0.7;">Total Amount</p>
+
+<h1 id="previewTotal"
+
+style="
+font-size:36px;
+color:#4ade80;">
+
+₦0
+
+</h1>
+
+</div>
+
+<div>
+
+<p style="opacity:0.7;">Status</p>
+
+<h2 style="color:#22c55e;">
+PAID
 </h2>
+
+</div>
+
+</div>
 
 </div>
 
@@ -400,16 +555,25 @@ Total:
 
 <div style="margin-top:30px;text-align:center;">
 
-<button onclick="calculateInvoice()" class="btn">
+<button onclick="calculateInvoice()"
+class="btn">
+
 Generate Receipt
+
 </button>
 
-<button onclick="saveInvoice()" class="btn">
+<button onclick="saveInvoice()"
+class="btn">
+
 Save Invoice
+
 </button>
 
-<button onclick="window.print()" class="btn">
+<button onclick="window.print()"
+class="btn">
+
 Print / Save PDF
+
 </button>
 
 </div>
@@ -421,6 +585,20 @@ Print / Save PDF
 document.getElementById("date").innerText =
 new Date().toLocaleDateString();
 
+function formatNumber(input){
+
+let value =
+input.value.replace(/,/g,'');
+
+if(!isNaN(value) && value !== ''){
+
+input.value =
+Number(value).toLocaleString();
+
+}
+
+}
+
 function calculateInvoice(){
 
 let item =
@@ -430,7 +608,10 @@ let qty =
 Number(document.getElementById("q1").value);
 
 let price =
-Number(document.getElementById("p1").value);
+Number(
+document.getElementById("p1")
+.value.replace(/,/g,'')
+);
 
 let transport =
 Number(document.getElementById("transportFee").value);
@@ -471,11 +652,19 @@ document.getElementById("previewPayment").innerText =
 document.getElementById("paymentMethod").value;
 
 document.getElementById("previewItems").innerHTML = `
+
 <p>
-${item} - ${qty} Tons × ₦${price.toLocaleString()}
-=
-<strong>₦${total.toLocaleString()}</strong>
+${item}
 </p>
+
+<p>
+${qty} Tons × ₦${price.toLocaleString()}
+</p>
+
+<h3>
+₦${total.toLocaleString()}
+</h3>
+
 `;
 
 document.getElementById("receiptPreview").style.display =
@@ -493,7 +682,8 @@ Number(document.getElementById("sales").value);
 let expenses =
 Number(document.getElementById("expenses").value);
 
-let profit = sales - expenses;
+let profit =
+sales - expenses;
 
 document.getElementById("profit").innerText =
 "₦" + profit.toLocaleString();
@@ -509,4 +699,4 @@ alert("Invoice Saved Successfully");
 </script>
 
 </body>
-  </html>
+    </html>
