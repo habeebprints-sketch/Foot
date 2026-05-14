@@ -241,7 +241,7 @@
 
 <table class="blue">
   <tr>
-    <th>Description</th>
+    <th>Material</th>
     <th>Quantity (Tons)</th>
     <th>Price (₦)</th>
     <th>Total</th>
@@ -255,49 +255,103 @@
   </tr>
 
   <tr>
-    <td contenteditable="true">Type Item</td>
-    <td><input type="text" id="q2" class="tableInput"></td>
-    <td><input type="text" id="p2" class="tableInput"></td>
-    <td id="t2">₦0</td>
-  </tr>
+    <td>
 
-  <tr>
-    <td contenteditable="true">Type Item</td>
-    <td><input type="text" id="q3" class="tableInput"></td>
-    <td><input type="text" id="p3" class="tableInput"></td>
-    <td id="t3">₦0</td>
-  </tr>
+<select class="input" style="min-width:140px;">
+<option>10mm Rod</option>
+<option>12mm Rod</option>
+<option>16mm Rod</option>
+<option>Galvanized Pipe</option>
+<option>Square Pipe</option>
+<option>HB Pipe</option>
+<option>Metal Plate</option>
+</select>
+</td>
+        <td><input type="text" id="q2" class="tableInput"></td>
+        <td><input type="text" id="p2" class="tableInput"></td>
+        <td id="t2">₦0</td>
+      </tr><tr>
+    <td>
 
-  <tr>
-    <td contenteditable="true">Type Item</td>
-    <td><input type="text" id="q4" class="tableInput"></td>
-    <td><input type="text" id="p4" class="tableInput"></td>
-    <td id="t4">₦0</td>
-  </tr>
+<select class="input" style="min-width:140px;">
+<option>10mm Rod</option>
+<option>12mm Rod</option>
+<option>16mm Rod</option>
+<option>Galvanized Pipe</option>
+<option>Square Pipe</option>
+<option>HB Pipe</option>
+<option>Metal Plate</option>
+</select>
+</td>
+        <td><input type="text" id="q3" class="tableInput"></td>
+        <td><input type="text" id="p3" class="tableInput"></td>
+        <td id="t3">₦0</td>
+      </tr><tr>
+    <td>
 
-  <tr>
-    <td contenteditable="true">Type Item</td>
-    <td><input type="text" id="q5" class="tableInput"></td>
-    <td><input type="text" id="p5" class="tableInput"></td>
-    <td id="t5">₦0</td>
-  </tr>
+<select class="input" style="min-width:140px;">
+<option>10mm Rod</option>
+<option>12mm Rod</option>
+<option>16mm Rod</option>
+<option>Galvanized Pipe</option>
+<option>Square Pipe</option>
+<option>HB Pipe</option>
+<option>Metal Plate</option>
+</select>
+</td>
+        <td><input type="text" id="q4" class="tableInput"></td>
+        <td><input type="text" id="p4" class="tableInput"></td>
+        <td id="t4">₦0</td>
+      </tr><tr>
+    <td>
 
-  <tr>
-    <td contenteditable="true">Type Item</td>
-    <td><input type="text" id="q6" class="tableInput"></td>
-    <td><input type="text" id="p6" class="tableInput"></td>
-    <td id="t6">₦0</td>
-  </tr>
+<select class="input" style="min-width:140px;">
+<option>10mm Rod</option>
+<option>12mm Rod</option>
+<option>16mm Rod</option>
+<option>Galvanized Pipe</option>
+<option>Square Pipe</option>
+<option>HB Pipe</option>
+<option>Metal Plate</option>
+</select>
+</td>
+        <td><input type="text" id="q5" class="tableInput"></td>
+        <td><input type="text" id="p5" class="tableInput"></td>
+        <td id="t5">₦0</td>
+      </tr><tr>
+    <td>
 
-  <tr>
-    <td contenteditable="true">Type Item</td>
-    <td><input type="text" id="q7" class="tableInput"></td>
-    <td><input type="text" id="p7" class="tableInput"></td>
-    <td id="t7">₦0</td>
-  </tr>
-</table>
+<select class="input" style="min-width:140px;">
+<option>10mm Rod</option>
+<option>12mm Rod</option>
+<option>16mm Rod</option>
+<option>Galvanized Pipe</option>
+<option>Square Pipe</option>
+<option>HB Pipe</option>
+<option>Metal Plate</option>
+</select>
+</td>
+        <td><input type="text" id="q6" class="tableInput"></td>
+        <td><input type="text" id="p6" class="tableInput"></td>
+        <td id="t6">₦0</td>
+      </tr><tr>
+    <td>
 
-<div class="summary">
+<select class="input" style="min-width:140px;">
+<option>10mm Rod</option>
+<option>12mm Rod</option>
+<option>16mm Rod</option>
+<option>Galvanized Pipe</option>
+<option>Square Pipe</option>
+<option>HB Pipe</option>
+<option>Metal Plate</option>
+</select>
+</td>
+        <td><input type="text" id="q7" class="tableInput"></td>
+        <td><input type="text" id="p7" class="tableInput"></td>
+        <td id="t7">₦0</td>
+      </tr>
+    </table><div class="summary">
 
   <div class="summary-box payment-summary">
     <h3>Receipt Summary</h3>
@@ -353,19 +407,22 @@
 
     <hr style="border:1px solid #374151;margin:20px 0;">
 
-    <div style="display:flex;justify-content:space-between;font-size:28px;color:#22c55e;font-weight:bold;">
-      <span>Total</span>
-      <span id="previewTotal"></span>
-    </div>
+    <div style="margin-top:20px;background:#0f172a;padding:15px;border-radius:15px;">
 
-  </div>
+<p style="margin-bottom:10px;color:#94a3b8;">Amount in Words</p>
+<strong id="amountWords" style="font-size:18px;color:white;">Zero Naira Only</strong>
+</div><div style="display:flex;justify-content:space-between;font-size:28px;color:#22c55e;font-weight:bold;">
+          <span>Total</span>
+          <span id="previewTotal"></span>
+        </div></div>
 
 </div>
 
 <div style="margin-top:30px;text-align:center;">
   <button onclick="calculateInvoice()" class="btn">Generate Receipt</button>
-  <button onclick="window.print()" class="btn">Print / Save PDF</button>
-</div>
+  <button onclick="saveInvoice()" class="btn">Save Invoice</button>
+
+<button onclick="window.print()" class="btn">Print / Save PDF</button> </div>
 
   </div><script>
 
@@ -434,7 +491,21 @@ document.getElementById('previewPayment').innerText = payment;
 
 document.getElementById('previewTotal').innerText = '₦' + grandTotal.toLocaleString('en-NG');
 
+document.getElementById('amountWords').innerText = grandTotal.toLocaleString('en-NG') + ' Naira Only';
+
 alert('Receipt Generated Successfully');
+}
+
+function saveInvoice(){
+const data = {
+receiptNo: document.getElementById('receiptNumber').value,
+customer: document.getElementById('customer').value,
+total: document.getElementById('previewTotal').innerText
+};
+
+localStorage.setItem('niccoInvoice', JSON.stringify(data));
+
+alert('Invoice Saved Successfully');
 }
 
 </script><style>
@@ -477,4 +548,4 @@ alert('Receipt Generated Successfully');
  transform:scale(1.05);
 }
 </style></body>
-    </html>
+</html>
