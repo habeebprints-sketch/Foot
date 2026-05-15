@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NICCO ROD - Smart Invoice</title>
 
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 <style>
 
 *{
@@ -51,6 +53,7 @@ border-radius:12px;
 border:1px solid #d1d5db;
 margin-top:8px;
 font-size:15px;
+outline:none;
 }
 
 .amountInput{
@@ -401,8 +404,6 @@ class="smallInput">
 
 </div>
 
-<!-- RECEIPT PREVIEW -->
-
 <div id="receiptPreview"
 
 style="
@@ -685,43 +686,17 @@ Number(value).toLocaleString();
 function numberToWords(num){
 
 const ones = [
-
 "",
-"One",
-"Two",
-"Three",
-"Four",
-"Five",
-"Six",
-"Seven",
-"Eight",
-"Nine",
-"Ten",
-"Eleven",
-"Twelve",
-"Thirteen",
-"Fourteen",
-"Fifteen",
-"Sixteen",
-"Seventeen",
-"Eighteen",
-"Nineteen"
-
+"One","Two","Three","Four","Five",
+"Six","Seven","Eight","Nine","Ten",
+"Eleven","Twelve","Thirteen","Fourteen",
+"Fifteen","Sixteen","Seventeen",
+"Eighteen","Nineteen"
 ];
 
 const tens = [
-
-"",
-"",
-"Twenty",
-"Thirty",
-"Forty",
-"Fifty",
-"Sixty",
-"Seventy",
-"Eighty",
-"Ninety"
-
+"","","Twenty","Thirty","Forty",
+"Fifty","Sixty","Seventy","Eighty","Ninety"
 ];
 
 function convertHundreds(n){
@@ -730,9 +705,7 @@ let str = "";
 
 if(n > 99){
 
-str +=
-ones[Math.floor(n / 100)]
-+ " Hundred ";
+str += ones[Math.floor(n / 100)] + " Hundred ";
 
 n %= 100;
 
@@ -740,9 +713,7 @@ n %= 100;
 
 if(n > 19){
 
-str +=
-tens[Math.floor(n / 10)]
-+ " ";
+str += tens[Math.floor(n / 10)] + " ";
 
 n %= 10;
 
@@ -759,9 +730,7 @@ return str;
 }
 
 if(num === 0){
-
 return "Zero Naira Only";
-
 }
 
 let result = "";
@@ -969,12 +938,8 @@ color:#4ade80;">
 
 `;
 
-
-
 document.getElementById("receiptPreview").style.display =
 "block";
-
-
 
 calculateProfit();
 
@@ -1002,7 +967,23 @@ document.getElementById("profit").innerText =
 
 function saveInvoice(){
 
-alert("Invoice Saved Successfully");
+let receipt =
+document.getElementById("receiptPreview");
+
+html2canvas(receipt).then(canvas => {
+
+let link =
+document.createElement("a");
+
+link.download =
+"NICCO_ROD_RECEIPT.png";
+
+link.href =
+canvas.toDataURL("image/png");
+
+link.click();
+
+});
 
 }
 
